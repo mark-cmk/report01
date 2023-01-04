@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./CSS/style.css">
+        <title>NGS ANALYSIS REPORT</title>
+    </head>
+    <body>
+        <header>
+            <div class="title">
+                <img src="./resource/img/세니젠로고.png"/>
+                <h1>SANIGEN NGS ANALYSIS REPORT</h1>
+            </div>
+            <div class="nav">
+
+            </div>
+        </header>
+        <main>
+            <div class="info">
+                <div class="analysis">
+                    <h1>16S rRNA Metagenome Sequencing</h1>
+                </div>
+                <div class="customer">
+                    <h3>Customer Information</h3>
+                    <ul>
+                        <li>Organization : 국민바이오</li>
+                        <li>Customer name : 정예진 선생님</li>
+                    </ul>
+                </div>
+                <div class="sample">
+                    <h3>Sample Information</h3>
+                    <ul>
+                        <li>Sample type : Metagenomic gDNA</li>
+                        <li>Quantity : 36 samples</li>
+                        <li>Analysis type : 16S rRNA metagenomic sequencing을 이용한 샘플 내 균총 분석</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="overview">
+                <h3>Analysis Overview</h3>
+                <div class="step">
+                    <h4>1. Sequencing</h4>
+                    <ul>
+                        <li>16S rRNA V3-V4 region PCR amplification</li>
+                        <li>Library construction (Nextera XT library prep kit)</li>
+                        <li>Sequencing (illumina MiSeq 300bp paired end)</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>2. Quality Control</h4>
+                    <ul>
+                        <li>Check sequencing quality (FastQC-v.0.11.9)</li>
+                        <li>Check over-represented sequences</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>3. Denoising Process</h4>
+                    <ul>
+                        <li>Trimming low quality reads (Trimmomatic v0.39)</li>
+                        <li>Error correction of noisy reads (DADA2-Qiime2.2021.11)</li>
+                        <li>Remove chimeric sequences (DADA2-Qiime2.2021.11)</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>4. Taxonomy Classification</h4>
+                    <ul>
+                        <li>Taxonomic sequence classification (reference database: SILVA138)</li>
+                        <li>Visualization</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>5. Diversity Analysis (Qiime2.2021.11)</h4>
+                    <ul>
+                        <li>Alpha diversity</li>
+                        <li>Beta diversity</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="rawData">
+                <h3>Raw Data Information</h3>
+                <img src="./resource/img/dataQuality.png"/>
+                <h4>Sequencing 결과 yield는 충분하게 확보되었습니다.</h4>
+                <ul>
+                    <li>Yield(bp) : Sequencing 된 total base pair 수 입니다.</li>
+                    <li>Read number : Sequencing을 통해 생산된 total read 수 입니다.</li>
+                    <li>GC ratio : 전체 염기서열 중 GC contents의 비율입니다.</li>
+                    <li>Q20 : 1/100 이하의 확률(99.9% 정확도)로 error가 생길 것으로 추정되는 base pair 비율입니다.</li>
+                    <li>Q30 : 1/1,000 이하의 확률(99.9% 정확도)로 error가 생길 것으로 추정되는 base pair 비율입니다.</li>
+                </ul>
+            </div>
+            <div class="qScore">
+                <h3>Per Base Sequence Quality</h3>
+                <img src="./resource/img/qScore.png"/>
+                <ul>
+                    <li>Sequence 내 각 position에서의 평균 data quality를 나타냅니다.</li>
+                    <li>illumina sequencing platform의 특성상 sequence 말단으로 갈수록 sequencing quality가 낮아지는 경향이 있습니다.</li>
+                </ul>
+            </div>
+            <div class="filtering">
+                <h3>Denoising and Filtering process</h3>
+                <img src="./resource/img/filtering.png"/>
+                <ul>
+                    <li>Denoising : adaptor, index 등의 artificial sequence를 제거하고, 전술한 read 말단의 low quality 부분을 잘라낸 후 noise를 수정/제거합니다.</li>
+                    <li>Pair-Merging : 최종적으로 남은 신뢰할 수 있는 고품질의 forward read와 reverse read를 이어 붙여 하나의 긴 read로 만들어줍니다.</li>
+                    <li>Remove Chimeric Sequences : 복수의 16S rRNA gene으로부터 증폭되어 발생한 chimeric sequence를 제거합니다.</li>
+                    <li>Chloroplast/Mitochondria Filtered : Sequencing 과정에서 유입되는 Chloroplast/Mitochondria 유래 read를 제거합니다.</li>
+                </ul>
+            </div>
+            <div class="feature">
+                <h3>Feature Table Summary</h3>
+                <div class="featureTable">
+                    <div class="img">
+                        <img src="./resource/img/summaryTable.png"/>
+                        <span>Summary Table</span>
+                    </div>
+                    <div class="img">
+                        <img src="./resource/img/frequency.png"/>
+                        <span>Frequency per Feature</span>
+                    </div>
+                </div>
+                <ul>
+                    <li>최종적으로 선별 및 확보된 서열들은 Representative Sequence (feature)로 정의하고, 확보된 전체 feature의 종류, 전체 빈도, feature 당 빈도를 확인했습니다.</li>
+                </ul>
+            </div>
+            <div class="classification">
+                <h3>Bacteria Taxonomy Classification</h3>
+                <div class="tables">
+                    <div class="table">
+                        <img src="./resource/data/2. Taxonomy Classification (Qiime2)/2. Taxonomy Classification (Qiime2)/Phylum_top10.png"/>
+                    </div>
+                    <div class="table">
+                        <img src="./resource/data/2. Taxonomy Classification (Qiime2)/2. Taxonomy Classification (Qiime2)/Class_top10.png"/>
+                    </div>
+                    <div class="table">
+                        <img src="./resource/data/2. Taxonomy Classification (Qiime2)/2. Taxonomy Classification (Qiime2)/Order_top10.png"/>
+                    </div>
+                    <div class="table">
+                        <img src="./resource/data/2. Taxonomy Classification (Qiime2)/2. Taxonomy Classification (Qiime2)/Family_top10.png"/>
+                    </div>
+                    <div class="table">
+                        <img src="./resource/data/2. Taxonomy Classification (Qiime2)/2. Taxonomy Classification (Qiime2)/Genus_top10.png"/>
+                    </div>
+                </div>
+                <ul>
+                    <li>각 level에서 상위 10개 taxon의 taxonomic classification을 확인했습니다.</li>
+                    <li>상세 결과는 FTP서버의 "3. Taxonomy classification (Krona Plot)" 폴더 참고</li>
+                </ul>
+            </div>
+            <div class="kronaPlot">
+                <h3>Krona Plot</h3>
+                <ul>
+                    <li>Sample : <a href="./resource/data/3. Taxonomy Classification (Krona plot)/3. Taxonomy Classification (Krona plot)/KronaPlot_5-ASA-1.html">5-ASA-1</a></li>
+                    <li>Sample : <a href="./resource/data/3. Taxonomy Classification (Krona plot)/3. Taxonomy Classification (Krona plot)/KronaPlot_5-ASA-3.html">5-ASA-3</a></li>
+                    <li>Sample : <a href="./resource/data/3. Taxonomy Classification (Krona plot)/3. Taxonomy Classification (Krona plot)/KronaPlot_5-ASA-5.html">5-ASA-5</a></li>
+                </ul>
+            </div>
+            <div class="diversity">
+                <div class="alpha">
+                    <h3>Alpha diversity - Rarefaction</h3>
+                    <img src="./resource/data/4. Diversity (1)/4. Diversity/1. Alpha/alpha_sample.png"/>
+                    <ul>
+                        <li>Shannon's Diversity index (alpha diversity) : Sample 내 미생물 다양성을 나타내는 지표입니다.</li>
+                        <li>Sampling depth가 올라감에 따라 일정수준에서 지표가 saturation이 되는 현상을 확인할 수 있습니다. saturation이 되는 구간은 각 sampling을 수행한 표본집단이 모집단을 충분히 반영하는 것을 의미합니다.</li>
+                        <li>군집간 분석 (Beta 의 경우 , 다양성이 급격하게 변하는 구간에서 수행할 경우 Sampling Bias 로 인해 실제 군집분포와 상이할 가능성이 있습니다 . 따라서 Sample 내 다양성 지표가 완만한 구간에서 Sampling 수행하여 군집간 분석을 진행합니다</li>
+                    </ul>
+                </div>
+                <h3>Beta diversity</h3>
+                <div class="beta">
+                    <div class="weighted">
+                        <img src="./resource/data/4. Diversity (1)/4. Diversity/2. Beta/beta-weighted.png"/>
+                        <ul>
+                            <li>미생물 균총의 양(weighted)을 이용하여 sample 별 거리 계산 후 좌표공간에 나타냈습니다.</li>
+                        </ul>
+                    </div>
+                    <div class="unweighted">
+                        <img src="./resource/data/4. Diversity (1)/4. Diversity/2. Beta/beta-unweighted.png"/>
+                        <ul>
+                            <li>미생물 균총의 유무(unweighted)를 이용하여 Sample 별 거리 계산 후 좌표공간에 나타냈습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="comment">
+                <h3>Comment</h3>
+                <ul>
+                    <li>Raw data는 안내드린 FTP 주소에서 다운로드 받으시길 바라며, 다운로드 가능 기간은 90일 입니다.</li>
+                    <li>각 sample의 classification 정보는 FTP서버 "3. Taxonomy classification (Krona Plot)" 폴더 내 파일들을 참조하시기 바랍니다.</li>
+                </ul>
+                <h3>FTP</h3>
+                <ul>
+                    <li>FTP : <a href="http://gofile.me/5YZtx/VEQ2V3tEk">http://gofile.me/5YZtx/VEQ2V3tEk</a></li>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <p>(주)세니젠 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.sanigen.kr">www.sanigen.kr</a></p>
+            <p>경기도 안양시 동안구 흥안대로427번길16 평촌디지털엠파이어빌딩411호</p>
+            <p>Tel. 1833-8010 &nbsp;&nbsp;&nbsp; Fax. 070-4009-7007 &nbsp;&nbsp;&nbsp; Mail. info@sanigen.kr</p>
+        </footer>
+    </body>
+</html>

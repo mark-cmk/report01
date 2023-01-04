@@ -1,0 +1,89 @@
+body {
+    background-color: white;
+    color: black;
+}
+
+h3 {
+    color: white;
+    background-color: blue;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.title img {
+    width: 200px;
+    height: auto;
+}
+
+.featureTable {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.featureTable .img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.featureTable span {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.tables {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tables .table {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    padding: 10px;
+    height: auto;
+}
+
+.alpha img {
+    width: 900px;
+}
+
+.beta {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.beta img {
+    width: 100%;
+}
+
+footer {
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    padding-left: 30px;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media only screen and (min-width: 1000px) {
+
+}
